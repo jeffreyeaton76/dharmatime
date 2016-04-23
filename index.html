@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>DharmaTime</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-resource.min.js"></script>
+  <script type="text/javascript" src="/js/app.js"></script>
+</head>
+<body ng-app="timer">
+  <div class"" ng-controller="timerController as tc">
+    <div ng-repeat="sit in tc.sits">
+      {{sit.date}}
+      {{sit.duration-set}}
+      {{sit.duration}}
+    </div>
+  </div>
+</body>
+</html>
