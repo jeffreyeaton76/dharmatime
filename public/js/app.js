@@ -5,8 +5,7 @@
     "$stateProvider",
     routerFunction
   ])
-  .factory("sitFactory", sitFactoryFunc)
-  .controller("timerController", ["sitFactory", timerControllerFunc])
+
 
 
 function routerFunction($stateProvider){
@@ -18,12 +17,7 @@ function routerFunction($stateProvider){
     controllerAs:"tc"
   })
 }
-function timerControllerFunc(Sit){
-  this.sits = Sit.query()
-}
 
-function sitFactoryFunc($resource){
-  return $resource("/api/sits/:id")
-}
+
 
 })();
