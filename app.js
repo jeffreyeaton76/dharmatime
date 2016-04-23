@@ -3,6 +3,7 @@ var hbs = require("express-handlebars");
 var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/timer");
 
+
 var Sit = mongoose.model("Sit", {
   date: {type: Date},
   duration_set: Number,
