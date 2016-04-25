@@ -6,27 +6,46 @@
     routerFunction
   ])
   .factory("sitFactory", sitFactoryFunc)
-  .controller("timerController", ["sitFactory", timerControllerFunc])
-  .controller("indexController", ["sitFactory", indexControllerFunc]);
+  .factory("newFactory", newFactoryFunc)
+  .controller("sitsController", ["sitFactory", sitsControllerFunc])
+  .controller("indexController", ["sitFactory", indexControllerFunc])
+  .controller("newController", ["sitFactory", newControllerFunc])
+  .controller("sessionController", ["sitFactory", sessionControllerFunc]);
 
 
   function routerFunction($stateProvider){
     $stateProvider
     .state("index", {
       url:"/",
-      templateUrl:"/views/index.html",
-      controller:"timerController",
-      controllerAs:"tc"
+      templateUrl:"/assets/html/index.html",
+      controller:"indexController",
+      controllerAs:"indexVM"
     })
     .state("sits", {
       url:"/sits",
-      templateUrl:"/views/sits.html",
-      controller:"timerController",
-      controllerAs:"tc"
+      templateUrl:"/assets/html/sits.html",
+      controller:"sitsController",
+      controllerAs:"sitsVM"
+    })
+    .state("new", {
+      url:"/new",
+      templateUrl:"/assets/html/new.html",
+      controller:"newController",
+      controllerAs:"newVW"
+    })
+    .state("session", {
+      url:"/session",
+      templateUrl:"/assets/html/session.html",
+      controller:"sessionController",
+      controllerAs:"sessionVM"
     });
   }
 
-  function timerControllerFunc(Sit){
+  function sitsControllerFunc(Sit){
+    this.sits = Sit.query();
+  }
+
+  function newControllerFunc(Sit){
     this.sits = Sit.query();
   }
 
@@ -34,9 +53,16 @@
     this.sits = Sit.query();
   }
 
+  function sessionControllerFunc(session){
+    this.session = session.query();
+  }
+
   function sitFactoryFunc($resource){
     return $resource("/api/sits/:id");
   }
 
+  function newFactoryFunc($resource){
+    return $resource("/new");
+  }
 
 })();
