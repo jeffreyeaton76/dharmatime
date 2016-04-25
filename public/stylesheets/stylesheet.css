@@ -7,3 +7,17 @@ body {
 a {
   color: white;
 }
+.nav {
+  width: 20%;
+  margin-top: 50px;
+}
+.nav li{
+  margin-left: -30px;
+  padding: 5px;
+  list-style: none;
+}
+.nav a {
+  text-decoration: none;
+  text-align: left;
+  color: white
+}
