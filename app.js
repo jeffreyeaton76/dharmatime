@@ -10,6 +10,7 @@ var Sit = mongoose.model("Sit", {
   duration: Number
 });
 
+
 var app = express();
 
 app.use(express.static("public"));
