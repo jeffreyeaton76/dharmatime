@@ -32,15 +32,15 @@ app.engine(".hbs", hbs({
 //   duration: 90
 // });
 
-app.get("/api/sits", function(req, res){
+app.get("/api", function(req, res){
   Sit.find().then(function(sits){
     res.json(sits);
   });
 });
 
-
-app.post("/api/:id", function(req, res){
-    res.end();
+app.post("/api", function(req, res){
+  console.log(req.body);
+  res.json({success: true});
 });
 
 app.get("/", function(req, res){

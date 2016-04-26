@@ -42,7 +42,7 @@
   }
 
   function sitFactoryFunc($resource){
-    var Sit = $resource("/api/sits/:id");
+    var Sit = $resource("/api/:id");
     return Sit;
   }
 
@@ -55,7 +55,6 @@
     newVM.new_sit = new sitFactory();
     newVM.create = function(){
       newVM.new_sit.$save().then(function(response){
-        console.log(response);
         $state.go("index");
       });
     };
