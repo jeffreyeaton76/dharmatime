@@ -17,7 +17,7 @@ var Sit = mongoose.model("Sit", SitSchema);
 var app = express();
 
 app.use("/assets", express.static("public"));
-app.use(parser.urlencoded({extended: true}));
+app.use(parser.json({extended: true}));
 app.set("view engine", "hbs");
 app.engine(".hbs", hbs({
   extname: ".hbs",
@@ -40,7 +40,9 @@ app.get("/api", function(req, res){
 
 app.post("/api", function(req, res){
   console.log(req.body);
-  res.json({success: true});
+  Sit.create({durationset: req.body.durationset}).then(function(){
+    res.json({success: true});
+  });
 });
 
 app.get("/", function(req, res){
