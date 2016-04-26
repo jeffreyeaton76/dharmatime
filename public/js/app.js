@@ -3,17 +3,17 @@
   angular.module("timer", ["ngResource", "ui.router"])
   .config([
     "$stateProvider",
+    "$locationProvider",
     routerFunction
   ])
   .factory("sitFactory", sitFactoryFunc)
-  .factory("newFactory", newFactoryFunc)
   .controller("sitsController", ["sitFactory", sitsControllerFunc])
   .controller("indexController", ["sitFactory", indexControllerFunc])
-  .controller("newController", ["sitFactory", newControllerFunc])
+  .controller("newController", ["sitFactory", "$state", newControllerFunc])
   .controller("sessionController", ["sitFactory", sessionControllerFunc]);
 
-
-  function routerFunction($stateProvider){
+  function routerFunction($stateProvider, $locationProvider){
+    $locationProvider.html5Mode(true);
     $stateProvider
     .state("index", {
       url:"/",
@@ -41,12 +41,24 @@
     });
   }
 
+  function sitFactoryFunc($resource){
+    var Sit = $resource("/api/sits/:id");
+    return Sit;
+  }
+
   function sitsControllerFunc(Sit){
     this.sits = Sit.query();
   }
 
-  function newControllerFunc(Sit){
-    this.sits = Sit.query();
+  function newControllerFunc(sitFactory, $state){
+    var newVM = this;
+    newVM.new_sit = new sitFactory();
+    newVM.create = function(){
+      newVM.new_sit.$save().then(function(response){
+        console.log(response);
+        $state.go("index");
+      });
+    };
   }
 
   function indexControllerFunc(Sit){
@@ -55,14 +67,6 @@
 
   function sessionControllerFunc(session){
     this.session = session.query();
-  }
-
-  function sitFactoryFunc($resource){
-    return $resource("/api/sits/:id");
-  }
-
-  function newFactoryFunc($resource){
-    return $resource("/new");
   }
 
 })();

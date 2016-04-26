@@ -38,15 +38,9 @@ app.get("/api/sits", function(req, res){
   });
 });
 
-app.get("/session", function(req, res){
-  res.render("session");
-});
 
-app.post("/new", function(req, res){
-  console.log(req.body);
-  Sit.create(req.body.sit).then(function(){
-    res.redirect("/session");
-  });
+app.post("/api/:id", function(req, res){
+    res.end();
 });
 
 app.get("/", function(req, res){

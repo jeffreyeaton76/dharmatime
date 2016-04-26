@@ -1,4 +1,6 @@
-<form action="/new" method="post">
-  <input type="text" name=sit[durationset] placeholder="Minutes"/>
-  <button type="submit">Start Session</button>
+<div data-ng-controller="newController as newVM">
+<form>
+  <input type="text" data-ng-model="newVm.new_sit.durationset" placeholder="Minutes"/>
+  <button data-ng-click="newVM.create()">Start Session</button>
 </form>
+</div>
