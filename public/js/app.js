@@ -54,34 +54,33 @@
       replace: false,
       restrict: 'E',
       link: function(scope){
-      var setTimer;
-      Sit.query().$promise.then(function(sits){
+        var setTimer = 0;
+        Sit.query().$promise.then(function(sits){
           setTimer = sits[sits.length - 1].durationset;
-        });
-        console.log(setTimer);
-        var start = Date.now(),
-        diff,
-        minutes,
-        seconds;
-        function timer() {
-          // get # seconds since startTimer() was called
-          diff = (setTimer * 60) - (((Date.now() - start) / 1000) | 0);
-          // truncates the float
-          minutes = (diff / 60) | 0;
-          seconds = (diff % 60) | 0;
-          minutes = minutes < 10 ? "0" + minutes : minutes;
-          seconds = seconds < 10 ? "0" + seconds : seconds;
+          var start = Date.now(),
+          diff,
+          minutes,
+          seconds;
+          function timer() {
+            // get # seconds since startTimer() was called
+            diff = (setTimer * 60) - (((Date.now() - start) / 1000) | 0);
+            // truncates the float
+            minutes = (diff / 60) | 0;
+            seconds = (diff % 60) | 0;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
 
-          scope.clock = minutes + ":" + seconds;
+            scope.clock = minutes + ":" + seconds;
 
-          if (diff <= 0) {
-            // add one second so that the count down starts at the full duration
-            // example 05:00 not 04:59
-            start = Date.now() + 1000;
+            if (diff <= 0) {
+              // add one second so that the count down starts at the full duration
+              // example 05:00 not 04:59
+              start = Date.now() + 1000;
+            }
           }
-        }
-        timer();
-        $interval(timer, 1000);
+          timer();
+          $interval(timer, 1000);
+        });
       }
     };
   }
