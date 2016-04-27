@@ -75,11 +75,11 @@
             if (diff <= 0) {
               // add one second so that the count down starts at the full duration
               // example 05:00 not 04:59
-              start = Date.now() + 1000;
+              $interval.cancel(scope.timer);
             }
           }
           timer();
-          $interval(timer, 1000);
+          scope.timer = $interval(timer, 1000);
         });
       }
     };
