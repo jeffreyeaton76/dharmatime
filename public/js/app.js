@@ -50,7 +50,7 @@
 
   function clockDirectiveFunc($interval, Sit){
     return {
-      template: '<h1>{{clock}}</h1>',
+      template: '<h1>{{clock}}</h1>' + '<input type="button" value="Stop Timer" ng-click="stopTimer()" />',
       replace: false,
       restrict: 'E',
       link: function(scope){
@@ -73,10 +73,11 @@
             scope.clock = minutes + ":" + seconds;
 
             if (diff <= 0) {
-              // add one second so that the count down starts at the full duration
-              // example 05:00 not 04:59
               $interval.cancel(scope.timer);
             }
+            scope.stopTimer = function(){
+              $interval.cancel(scope.timer);
+            };
           }
           timer();
           scope.timer = $interval(timer, 1000);
