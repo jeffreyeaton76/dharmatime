@@ -10,7 +10,44 @@
   .controller("sitsController", ["sitFactory", sitsControllerFunc])
   .controller("indexController", ["sitFactory", indexControllerFunc])
   .controller("newController", ["sitFactory", "$state", newControllerFunc])
-  .controller("sessionController", ["sitFactory", sessionControllerFunc]);
+  .controller("sessionController", ["sitFactory", sessionControllerFunc])
+  .directive('clockDirective', ["$interval", function($interval){
+    return {
+      template: '<h1>{{clock}}</h1>',
+      replace: false,
+      restrict: 'E',
+      link: function(scope){
+        scope.clock = "hello";
+        var fiveMinutes = 60 * 5;
+        var start = Date.now(),
+        diff,
+        minutes,
+        seconds;
+        function timer() {
+          // get # seconds since startTimer() was called
+          diff = fiveMinutes - (((Date.now() - start) / 1000) | 0);
+
+          // truncates the float
+          minutes = (diff / 60) | 0;
+          seconds = (diff % 60) | 0;
+
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+
+          scope.clock = minutes + ":" + seconds;
+
+          if (diff <= 0) {
+            // add one second so that the count down starts at the full duration
+            // example 05:00 not 04:59
+            start = Date.now() + 1000;
+          }
+        }
+        // we don't want to wait a full second before the timer starts
+        timer();
+        $interval(timer, 1000);
+      }
+    };
+  }]);
 
   function routerFunction($stateProvider, $locationProvider){
     $locationProvider.html5Mode(true);
@@ -50,12 +87,12 @@
     this.sits = Sit.query();
   }
 
-  function newControllerFunc(sitFactory, $state){
+  function newControllerFunc(Sit, $state){
     var newVM = this;
-    newVM.new_sit = new sitFactory();
+    newVM.new_sit = new Sit();
     newVM.create = function(){
       newVM.new_sit.$save().then(function(response){
-        $state.go("index");
+        $state.go("session");
       });
     };
   }

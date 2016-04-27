@@ -45,7 +45,7 @@ app.post("/api", function(req, res){
   });
 });
 
-app.get("/", function(req, res){
+app.get("/*", function(req, res){
   res.render("timer");
 });
 
