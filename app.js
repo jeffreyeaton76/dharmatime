@@ -7,13 +7,12 @@ mongoose.connect("mongodb://localhost/timer");
 var SitSchema = new mongoose.Schema(
   {
     date: {type: Date},
-    durationset: String,
+    durationset: Number,
     duration: Number
   }
 );
 
 var Sit = mongoose.model("Sit", SitSchema);
-
 var app = express();
 
 app.use("/assets", express.static("public"));
@@ -39,8 +38,7 @@ app.get("/api", function(req, res){
 });
 
 app.post("/api", function(req, res){
-  console.log(req.body);
-  Sit.create({durationset: req.body.durationset}).then(function(){
+  Sit.create({date: Date.now(), durationset: req.body.durationset}).then(function(){
     res.json({success: true});
   });
 });

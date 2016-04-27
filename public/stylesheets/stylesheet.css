@@ -21,3 +21,8 @@ a {
   text-align: left;
   color: white
 }
+#clock {
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 80px;
+}
