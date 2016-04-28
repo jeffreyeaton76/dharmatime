@@ -58,20 +58,23 @@
 
   function clockDirectiveFunc($interval, Sit){
     return {
-      template: '<h1>{{clock}}</h1>' + '<input type="button" value="Stop Timer" ng-click="stopTimer()" />',
+      template: '<h1>{{clock}}</h1>' + '<input type="button" value="Pause/Resume" ng-click="pauseTimer()" />' + '<input type="button" value="Stop Timer" ng-click="stopTimer()" />',
       replace: false,
       restrict: 'E',
       link: function(scope){
         var setTimer = 0;
         Sit.query().$promise.then(function(sits){
-          setTimer = sits[sits.length - 1].durationset;
+          var bell = new Audio('/assets/gong.wav');
+          bell.play();
+          setTimer = (sits[sits.length - 1].durationset) * 60;
           var start = Date.now(),
           diff,
           minutes,
           seconds;
+          var pause = false;
+          var postPause;
           function timer() {
-            // get # seconds since startTimer() was called
-            diff = (setTimer * 60) - (((Date.now() - start) / 1000) | 0);
+            diff = setTimer - (((Date.now() - start) / 1000) | 0);
             // truncates the float
             minutes = (diff / 60) | 0;
             seconds = (diff % 60) | 0;
@@ -80,17 +83,32 @@
 
             scope.clock = minutes + ":" + seconds;
 
-            if (diff <= 0) {
-              $interval.cancel(scope.timer);
-            }
+            scope.pauseTimer = function(){
+              if (pause === false){
+                pause = true;
+                $interval.cancel(scope.timer);
+                return;
+              }
+              if (pause === true){
+                start = Date.now();
+                setTimer = ((minutes * 60) + seconds);
+                pause = false;
+                scope.timer = $interval(timer, 1000);
+              }
+            };
+
             scope.stopTimer = function(){
-              scope.duration = (setTimer * 60)- ((minutes * 60) + seconds);
+              scope.duration = setTimer - ((minutes * 60) + seconds);
               var record = sits[sits.length - 1];
               record.duration = scope.duration;
               Sit.update({duration: record.duration}, function(){
               });
+              bell.play();
               $interval.cancel(scope.timer);
             };
+            if (diff <= 0) {
+              scope.stopTimer();
+            }
           }
           timer();
           scope.timer = $interval(timer, 1000);
