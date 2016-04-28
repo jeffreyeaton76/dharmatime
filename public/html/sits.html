@@ -1,6 +1,6 @@
 <nav-directive></nav-directive>
 <div class="content">
-    <div ng-repeat="sit in sitsVM.sits">
+    <div ng-repeat="sit in sitsVM.sits | reverse">
       <h1>Date sat: {{sit.date | date}}<h1>
         <h2>Time set: {{sit.durationset}} minutes</h2>
         <h2>Time sat: {{sit.duration | formatTimer}}<h2>

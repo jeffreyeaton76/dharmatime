@@ -148,6 +148,12 @@
     };
   });
 
+  timer.filter('reverse', function() {
+    return function(items) {
+      return items.slice().reverse();
+    };
+  });
+
   function indexControllerFunc(Sit){
     this.sits = Sit.query();
   }
