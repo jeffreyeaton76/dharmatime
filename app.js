@@ -38,7 +38,13 @@ app.get("/api", function(req, res){
 });
 
 app.post("/api", function(req, res){
-  Sit.create({date: Date.now(), durationset: req.body.durationset}).then(function(){
+  Sit.create({date: Date.now(), durationset: req.body.durationset, duration: 0}).then(function(){
+    res.json({success: true});
+  });
+});
+
+app.put("/api", function(req, res){
+  Sit.findOneAndUpdate({duration: 0}, {duration: req.body.duration}).then(function(){
     res.json({success: true});
   });
 });

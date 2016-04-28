@@ -44,7 +44,9 @@
   }
 
   function sitFactoryFunc($resource){
-    var Sit = $resource("/api/:id");
+    var Sit = $resource("/api/:id", {}, {
+      update: {method: "PUT"}
+    });
     return Sit;
   }
 
@@ -76,6 +78,12 @@
               $interval.cancel(scope.timer);
             }
             scope.stopTimer = function(){
+              scope.duration = (minutes * 60) + seconds;
+              var record = sits[sits.length - 1];
+              record.duration = (scope.duration / 60);
+              console.log(record);
+              Sit.update({duration: record.duration}, function(){
+              });
               $interval.cancel(scope.timer);
             };
           }
@@ -84,21 +92,6 @@
         });
       }
     };
-  }
-
-  function navDirectiveFunc(){
-    return {
-      template: '<h1>DharmaTime</h1><ul><li><a ui-sref="new">New Sitting</a></li><li><a ui-sref="sits">Archive</a></li><li>Settings</li><li>About</li></ul>',
-      replace: false,
-      restrict: 'E',
-    };
-  }
-
-
-
-
-  function sitsControllerFunc(Sit){
-    this.sits = Sit.query();
   }
 
   function newControllerFunc(Sit, $state){
@@ -110,6 +103,19 @@
       });
     };
   }
+
+  function navDirectiveFunc(){
+    return {
+      template: '<h1>DharmaTime</h1><ul><li><a ui-sref="new">New Sitting</a></li><li><a ui-sref="sits">Archive</a></li><li>Settings</li><li>About</li></ul>',
+      replace: false,
+      restrict: 'E',
+    };
+  }
+
+  function sitsControllerFunc(Sit){
+    this.sits = Sit.query();
+  }
+
 
   function indexControllerFunc(Sit){
     this.sits = Sit.query();
