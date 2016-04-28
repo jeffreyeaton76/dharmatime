@@ -1,6 +1,6 @@
 "use strict";
 (function(){
-  angular.module("timer", ["ngResource", "ui.router"])
+  var timer = angular.module("timer", ["ngResource", "ui.router"])
   .config([
     "$stateProvider",
     "$locationProvider",
@@ -80,8 +80,8 @@
             scope.stopTimer = function(){
               scope.duration = (minutes * 60) + seconds;
               var record = sits[sits.length - 1];
-              record.duration = (scope.duration / 60);
-              console.log(record);
+              record.duration = scope.duration;
+              console.log(record.duration);
               Sit.update({duration: record.duration}, function(){
               });
               $interval.cancel(scope.timer);
@@ -116,6 +116,14 @@
     this.sits = Sit.query();
   }
 
+  timer.filter('formatTimer', function () {
+    return function (input) {
+      function z(n) { return (n < 10 ? '0' : '') + n; }
+      var seconds = input % 60;
+      var minutes = Math.floor(input % 3600 / 60);
+      return (z(minutes) + ' minutes and ' + z(seconds) + ' seconds');
+    };
+  });
 
   function indexControllerFunc(Sit){
     this.sits = Sit.query();
