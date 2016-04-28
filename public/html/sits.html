@@ -1,7 +1,10 @@
-<div class"" ng-controller="sitsController as sitsVM">
-  <div ng-repeat="sit in sitsVM.sits">
-    <h1>Date sat: {{sit.date | date}}<h1>
-      <h2>Time set: {{sit.durationset}}</h2>
-      <h2>Time sat: {{sit.duration}}<h2>
+<nav-directive></nav-directive>
+<div class="content">
+  <div class"" ng-controller="sitsController as sitsVM">
+    <div ng-repeat="sit in sitsVM.sits">
+      <h1>Date sat: {{sit.date | date}}<h1>
+        <h2>Time set: {{sit.durationset}}</h2>
+        <h2>Time sat: {{sit.duration}}<h2>
+        </div>
       </div>
     </div>

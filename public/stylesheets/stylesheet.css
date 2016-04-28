@@ -3,26 +3,38 @@ body {
   color: white;
   font-family: 'Merienda', cursive;
 }
-
-a {
-  color: white;
-}
-.nav {
+nav-directive {
+  height: 100%;
   width: 20%;
-  margin-top: 50px;
+  top:0px;
+  left:0px;
+  margin-bottom:0px;
+  position: fixed;
 }
-.nav li{
-  margin-left: -30px;
+nav-directive li {
+  margin-left: -25px;
   padding: 5px;
   list-style: none;
 }
-.nav a {
+nav-directive a {
   text-decoration: none;
   text-align: left;
   color: white
 }
+.content {
+  width:80%;
+  top:0px;
+  margin-bottom: 0;
+  margin-left: 28%;
+}
 #clock {
   width: 30%;
+  margin: 0 auto;
+  margin-top: 80px;
+}
+#minutes-form {
+  height: 60px;
+  width: 40%;
   margin: 0 auto;
   margin-top: 80px;
 }

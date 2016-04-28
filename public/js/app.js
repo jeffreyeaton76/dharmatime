@@ -11,8 +11,8 @@
   .controller("indexController", ["sitFactory", indexControllerFunc])
   .controller("newController", ["sitFactory", "$state", newControllerFunc])
   .controller("sessionController", ["sitFactory", sessionControllerFunc])
-  .directive('clockDirective', ["$interval", "sitFactory", clockDirectiveFunc]);
-
+  .directive('clockDirective', ["$interval", "sitFactory", clockDirectiveFunc])
+  .directive('navDirective', navDirectiveFunc);
 
   function routerFunction($stateProvider, $locationProvider){
     $locationProvider.html5Mode(true);
@@ -85,6 +85,17 @@
       }
     };
   }
+
+  function navDirectiveFunc(){
+    return {
+      template: '<h1>DharmaTime</h1><ul><li><a ui-sref="new">New Sitting</a></li><li><a ui-sref="sits">Archive</a></li><li>Settings</li><li>About</li></ul>',
+      replace: false,
+      restrict: 'E',
+    };
+  }
+
+
+
 
   function sitsControllerFunc(Sit){
     this.sits = Sit.query();
