@@ -3,6 +3,10 @@ body {
   color: white;
   font-family: 'Merienda', cursive;
 }
+a {
+  color: white;
+  text-decoration: none;
+}
 nav-directive {
   height: 100%;
   width: 20%;
@@ -17,15 +21,14 @@ nav-directive li {
   list-style: none;
 }
 nav-directive a {
-  text-decoration: none;
   text-align: left;
-  color: white
 }
 .content {
   width:80%;
   top:0px;
   margin-bottom: 0;
   margin-left: 28%;
+  width: 60%;
 }
 #clock {
   width: 30%;
@@ -37,4 +40,7 @@ nav-directive a {
   width: 40%;
   margin: 0 auto;
   margin-top: 80px;
+}
+input[type="number"] {
+   width:100px;
 }

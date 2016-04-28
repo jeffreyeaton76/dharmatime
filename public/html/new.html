@@ -2,7 +2,7 @@
 <div class"content">
   <div data-ng-controller="newController as newVM" id="minutes-form">
     <form>
-      <input type="text" data-ng-model="newVM.new_sit.durationset" placeholder="Minutes"/>
+      <input type="number" min="0" max="60" data-ng-model="newVM.new_sit.durationset" placeholder="Minutes"/>
       <button type="button" data-ng-click="newVM.create()">Start Session</button>
     </form>
   </div>

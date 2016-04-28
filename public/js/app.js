@@ -35,6 +35,12 @@
       controller:"newController",
       controllerAs:"newVW"
     })
+    .state("about", {
+      url:"/about",
+      templateUrl:"/assets/html/about.html",
+      // controller:"aboutController",
+      // controllerAs:"aboutVW"
+    })
     .state("session", {
       url:"/session",
       templateUrl:"/assets/html/session.html",
@@ -78,10 +84,9 @@
               $interval.cancel(scope.timer);
             }
             scope.stopTimer = function(){
-              scope.duration = (minutes * 60) + seconds;
+              scope.duration = (setTimer * 60)- ((minutes * 60) + seconds);
               var record = sits[sits.length - 1];
               record.duration = scope.duration;
-              console.log(record.duration);
               Sit.update({duration: record.duration}, function(){
               });
               $interval.cancel(scope.timer);
@@ -106,7 +111,7 @@
 
   function navDirectiveFunc(){
     return {
-      template: '<h1>DharmaTime</h1><ul><li><a ui-sref="new">New Sitting</a></li><li><a ui-sref="sits">Archive</a></li><li>Settings</li><li>About</li></ul>',
+      template: '<h1><a ui-sref="index">DharmaTime</a></h1><ul><li><a ui-sref="new">New Sitting</a></li><li><a ui-sref="sits">Archive</a></li><li>Settings</li><li><a ui-sref="about">About</a></li></ul>',
       replace: false,
       restrict: 'E',
     };
