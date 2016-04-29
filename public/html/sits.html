@@ -1,8 +1,11 @@
 <nav-directive></nav-directive>
 <div class="content">
+  <h1>Log of past sessions</h1>
     <div ng-repeat="sit in sitsVM.sits | reverse">
-      <h1>Date sat: {{sit.date | date}}<h1>
-        <h2>Time set: {{sit.durationset}} minutes</h2>
-        <h2>Time sat: {{sit.duration | formatTimer}}<h2>
+      <h2><span id="date">{{sit.date | date}}</span><h2>
+        <h2 id="log">Time set: {{sit.durationset}} minutes<br>
+          Time sat: {{sit.duration | formatTimer}}
+        </h2>
+          <br>
         </div>
     </div>

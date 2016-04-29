@@ -2,6 +2,7 @@ var express = require("express");
 var hbs = require("express-handlebars");
 var mongoose = require("mongoose");
 var parser = require("body-parser");
+var favicon = require('serve-favicon');
 mongoose.connect("mongodb://localhost/timer");
 
 var SitSchema = new mongoose.Schema(
@@ -15,6 +16,7 @@ var SitSchema = new mongoose.Schema(
 var Sit = mongoose.model("Sit", SitSchema);
 var app = express();
 
+app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use("/assets", express.static("public"));
 app.use(parser.json({extended: true}));
 app.set("view engine", "hbs");

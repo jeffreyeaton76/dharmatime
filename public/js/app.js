@@ -10,7 +10,7 @@
   .controller("sitsController", ["sitFactory", sitsControllerFunc])
   .controller("indexController", ["sitFactory", indexControllerFunc])
   .controller("newController", ["sitFactory", "$state", newControllerFunc])
-  .controller("sessionController", ["sitFactory", sessionControllerFunc])
+  .controller("sessionController", ["$scope", sessionControllerFunc])
   .directive('clockDirective', ["$interval", "sitFactory", clockDirectiveFunc])
   .directive('navDirective', navDirectiveFunc);
 
@@ -38,8 +38,6 @@
     .state("about", {
       url:"/about",
       templateUrl:"/assets/html/about.html",
-      // controller:"aboutController",
-      // controllerAs:"aboutVW"
     })
     .state("session", {
       url:"/session",
@@ -58,11 +56,16 @@
 
   function clockDirectiveFunc($interval, Sit){
     return {
-      template: '<h1>{{clock}}</h1>' + '<input type="button" value="Pause/Resume" ng-click="pauseTimer()" />' + '<input type="button" value="Stop Timer" ng-click="stopTimer()" />',
+      template: '<h1>{{clock}}</h1>' + '<input type="button" class="button" value="Pause/Resume" ng-click="pauseTimer()" />' + '<input type="button" class="button" id="stop-button" value="Stop Timer" ng-click="stopTimer()" />',
       replace: false,
       restrict: 'E',
+      scope: {
+        endClock: '@'
+      },
       link: function(scope){
         var setTimer = 0;
+        scope.endClock = "on";
+        console.log("inside directive" + scope.endClock)
         Sit.query().$promise.then(function(sits){
           var bell = new Audio('/assets/gong.wav');
           bell.play();
@@ -78,7 +81,7 @@
             // truncates the float
             minutes = (diff / 60) | 0;
             seconds = (diff % 60) | 0;
-            minutes = minutes < 10 ? "0" + minutes : minutes;
+            // minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
 
             scope.clock = minutes + ":" + seconds;
@@ -104,6 +107,8 @@
               Sit.update({duration: record.duration}, function(){
               });
               bell.play();
+              scope.endClock = "off";
+              console.log("inside off function " + scope.endClock)
               $interval.cancel(scope.timer);
             };
             if (diff <= 0) {
@@ -158,8 +163,9 @@
     this.sits = Sit.query();
   }
 
-  function sessionControllerFunc(session){
-    this.session = session.query();
+  function sessionControllerFunc($scope){
+    var sessionVM = this;
+    sessionVM.clock = $scope.endClock;
   }
 
 })();

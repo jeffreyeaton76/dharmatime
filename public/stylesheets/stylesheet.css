@@ -1,3 +1,6 @@
+/** {
+  border: 1px solid white;
+}*/
 body {
   background-color: #753391;
   color: white;
@@ -11,8 +14,8 @@ nav-directive {
   height: 100%;
   width: 20%;
   top:0px;
-  left:0px;
   margin-bottom:0px;
+  margin-left: 10px;
   position: fixed;
 }
 nav-directive li {
@@ -25,15 +28,18 @@ nav-directive a {
 }
 .content {
   width:80%;
-  top:0px;
+  top: 0px;
   margin-bottom: 0px;
   margin-left: 28%;
+  padding-top: 60px;
   width: 60%;
 }
 #clock {
-  width: 30%;
+  width: 25%;
   margin: 0 auto;
   margin-top: 80px;
+  text-align: center;
+  font-size: 30px;
 }
 #minutes-form {
   height: 60px;
@@ -43,4 +49,34 @@ nav-directive a {
 }
 input[type="number"] {
    width:100px;
+   height: 35px;
+   border: none;
+   text-align: center;
+   font-size: 16px;
+}
+#date {
+  text-decoration: underline;
+  color: #4f9133;
+}
+.button {
+    background-color: #4f9133;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+#stop-button {
+  margin-top: 20px;
+  background-color: #750000;
+}
+#logo-box {
+  height: 200px;
+  width: 200px;
+  margin: 0 auto;
+  /*margin-left: 70px;*/
+}
+#logo {
+  height: 100%;
 }
