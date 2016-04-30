@@ -59,33 +59,28 @@
       template: '<h1>{{clock}}</h1>' + '<input type="button" class="button" value="Pause/Resume" ng-click="pauseTimer()" />' + '<input type="button" class="button" id="stop-button" value="Stop Timer" ng-click="stopTimer()" />',
       replace: false,
       restrict: 'E',
-      scope: {
-        endClock: '@'
-      },
       link: function(scope){
         var setTimer = 0;
-        scope.endClock = "on";
-        console.log("inside directive" + scope.endClock)
         Sit.query().$promise.then(function(sits){
           var bell = new Audio('/assets/gong.wav');
           bell.play();
-          setTimer = (sits[sits.length - 1].durationset) * 60;
-          var start = Date.now(),
-          diff,
-          minutes,
-          seconds;
-          var pause = false;
-          var postPause;
+          var durationSet = (sits[sits.length - 1].durationset);
+          //setTimer will change in the pause function while original durationSet
+          //will still be needed when the siting is over to calculate total
+          setTimer = durationSet * 60;
+          var start = Date.now(), diff, minutes, seconds;
           function timer() {
+            // bitwise OR truncates the float
             diff = setTimer - (((Date.now() - start) / 1000) | 0);
-            // truncates the float
             minutes = (diff / 60) | 0;
             seconds = (diff % 60) | 0;
-            // minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
 
+            //assigns time to display in the template
             scope.clock = minutes + ":" + seconds;
 
+            //pause & restart function
+            var pause = false;
             scope.pauseTimer = function(){
               if (pause === false){
                 pause = true;
@@ -100,15 +95,15 @@
               }
             };
 
+            //determines total elapsed time and updates user's record
             scope.stopTimer = function(){
-              scope.duration = setTimer - ((minutes * 60) + seconds);
+              scope.duration = (durationSet * 60) - ((minutes * 60) + seconds);
               var record = sits[sits.length - 1];
               record.duration = scope.duration;
               Sit.update({duration: record.duration}, function(){
               });
               bell.play();
               scope.endClock = "off";
-              console.log("inside off function " + scope.endClock)
               $interval.cancel(scope.timer);
             };
             if (diff <= 0) {
@@ -144,6 +139,7 @@
     this.sits = Sit.query();
   }
 
+  //converts a number of seconds into 00:00 format
   timer.filter('formatTimer', function () {
     return function (input) {
       function z(n) { return (n < 10 ? '0' : '') + n; }
@@ -153,6 +149,7 @@
     };
   });
 
+  //displays recent record first in archive
   timer.filter('reverse', function() {
     return function(items) {
       return items.slice().reverse();
