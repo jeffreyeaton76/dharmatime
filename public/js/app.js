@@ -56,7 +56,7 @@
 
   function clockDirectiveFunc($interval, Sit){
     return {
-      template: '<h1>{{clock}}</h1>' + '<input type="button" class="button" value="Pause/Resume" ng-click="pauseTimer()" />' + '<input type="button" class="button" id="stop-button" value="Stop Timer" ng-click="stopTimer()" />',
+      template: '<h1>{{clock}}</h1>' + '<input type="button" class="button" value="Pause/Resume" ng-click="pauseTimer()" />' + '<input type="button" class="button" id="stop-button" value="Stop Timer" ng-click="stopTimer()" />' + '<br>',
       replace: false,
       restrict: 'E',
       link: function(scope){
@@ -95,6 +95,22 @@
               }
             };
 
+            function revealJouranl(){
+              var container = document.getElementById("clock");
+              var input = document.createElement("input");
+              var label = document.createElement("label");
+              label.appendChild(document.createTextNode('Notes:'));
+              input.type = "text";
+              input.className = "save";
+              container.appendChild(label);
+              container.appendChild(input);
+              var btn = document.createElement("button");
+              var t = document.createTextNode("Save");
+              btn.className = "button";
+              btn.appendChild(t);
+              container.appendChild(btn);
+            }
+
             //determines total elapsed time and updates user's record
             scope.stopTimer = function(){
               scope.duration = (durationSet * 60) - ((minutes * 60) + seconds);
@@ -103,7 +119,7 @@
               Sit.update({duration: record.duration}, function(){
               });
               bell.play();
-              scope.endClock = "off";
+              revealJouranl();
               $interval.cancel(scope.timer);
             };
             if (diff <= 0) {
