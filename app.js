@@ -9,7 +9,8 @@ var SitSchema = new mongoose.Schema(
   {
     date: {type: Date},
     durationset: Number,
-    duration: Number
+    duration: Number,
+    notes: String
   }
 );
 
@@ -40,13 +41,13 @@ app.get("/api", function(req, res){
 });
 
 app.post("/api", function(req, res){
-  Sit.create({date: Date.now(), durationset: req.body.durationset, duration: 0}).then(function(){
+  Sit.create({date: Date.now(), durationset: req.body.durationset, duration: 0, notes: 'poop'}).then(function(){
     res.json({success: true});
   });
 });
 
 app.put("/api", function(req, res){
-  Sit.findOneAndUpdate({duration: 0}, {duration: req.body.duration}).then(function(){
+  Sit.findOneAndUpdate({notes: "poop"}, {notes: req.body.notes}).then(function(){
     res.json({success: true});
   });
 });

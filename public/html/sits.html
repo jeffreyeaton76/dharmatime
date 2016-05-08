@@ -4,7 +4,8 @@
     <div ng-repeat="sit in sitsVM.sits | reverse">
       <h2><span id="date">{{sit.date | date}}</span><h2>
         <h2 id="log">Time set: {{sit.durationset}} minutes<br>
-          Time sat: {{sit.duration | formatTimer}}
+          Time sat: {{sit.duration | formatTimer}}<br>
+          Notes: {{sit.notes}}
         </h2>
           <br>
         </div>

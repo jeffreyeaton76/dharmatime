@@ -11,6 +11,7 @@
   .controller("indexController", ["sitFactory", indexControllerFunc])
   .controller("newController", ["sitFactory", "$state", newControllerFunc])
   .controller("sessionController", ["$scope", sessionControllerFunc])
+  .controller("bodyController", ["$scope", bodyControllerFunc])
   .directive('clockDirective', ["$interval", "sitFactory", clockDirectiveFunc])
   .directive('navDirective', navDirectiveFunc);
 
@@ -63,7 +64,7 @@
         var setTimer = 0;
         Sit.query().$promise.then(function(sits){
           var bell = new Audio('/assets/gong.wav');
-          bell.play();
+          // bell.play();
           var durationSet = (sits[sits.length - 1].durationset);
           //setTimer will change in the pause function while original durationSet
           //will still be needed when the siting is over to calculate total
@@ -95,20 +96,28 @@
               }
             };
 
-            function revealJouranl(){
+            scope.revealJouranl = function(){
               var container = document.getElementById("clock");
-              var input = document.createElement("input");
+              var input = document.createElement("textarea");
               var label = document.createElement("label");
               label.appendChild(document.createTextNode('Notes:'));
-              input.type = "text";
-              input.className = "save";
+              input.className = "notes";
               container.appendChild(label);
               container.appendChild(input);
               var btn = document.createElement("button");
-              var t = document.createTextNode("Save");
+              var t = document.createTextNode("Save/Return");
               btn.className = "button";
               btn.appendChild(t);
               container.appendChild(btn);
+              btn.addEventListener("click", function(e){
+                e.preventDefault();
+                var record = sits[sits.length - 1];
+                scope.notes = input.value;
+                record.notes = scope.notes;
+                Sit.update({notes: record.notes}, function(){
+                  console.log("update notes");
+                });
+              });
             }
 
             //determines total elapsed time and updates user's record
@@ -118,8 +127,8 @@
               record.duration = scope.duration;
               Sit.update({duration: record.duration}, function(){
               });
-              bell.play();
-              revealJouranl();
+              // bell.play();
+              scope.revealJouranl();
               $interval.cancel(scope.timer);
             };
             if (diff <= 0) {
@@ -145,7 +154,7 @@
 
   function navDirectiveFunc(){
     return {
-      template: '<h1><a ui-sref="index">DharmaTime</a></h1><ul><li><a ui-sref="new">New Sitting</a></li><li><a ui-sref="sits">Archive</a></li><li>Settings</li><li><a ui-sref="about">About</a></li></ul>',
+      template: '<ul><li><a ui-sref="new">new sitting</a></li><li><a ui-sref="sits">archive</a></li><li><a ui-sref="about">settings</a></li><li><a ui-sref="about">about</a></li></ul>',
       replace: false,
       restrict: 'E',
     };
@@ -174,6 +183,10 @@
 
   function indexControllerFunc(Sit){
     this.sits = Sit.query();
+  }
+
+  function bodyControllerFunc($scope){
+    $scope.bodyStyle = {background: "url(assets/images/bridge.jpg) no-repeat center center fixed"};
   }
 
   function sessionControllerFunc($scope){
