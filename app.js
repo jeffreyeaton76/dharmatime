@@ -3,7 +3,13 @@ var hbs = require("express-handlebars");
 var mongoose = require("mongoose");
 var parser = require("body-parser");
 var favicon = require('serve-favicon');
-mongoose.connect("mongodb://localhost/timer");
+
+
+if(process.env.NODE_ENV == "production"){
+  mongoose.connect(process.env.MONGODB_URI);
+}else{
+  mongoose.connect("mongodb://localhost/timer");
+}
 
 var SitSchema = new mongoose.Schema(
   {
