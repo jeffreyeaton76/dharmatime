@@ -12,7 +12,7 @@
   .controller("newController", ["sitFactory", "$state", newControllerFunc])
   .controller("sessionController", ["$scope", sessionControllerFunc])
   .controller("bodyController", ["$scope", bodyControllerFunc])
-  .directive('clockDirective', ["$interval", "sitFactory", clockDirectiveFunc])
+  .directive('clockDirective', ["$interval", "sitFactory", "$state", clockDirectiveFunc])
   .directive('navDirective', navDirectiveFunc);
 
   function routerFunction($stateProvider, $locationProvider){
@@ -55,7 +55,7 @@
     return Sit;
   }
 
-  function clockDirectiveFunc($interval, Sit){
+  function clockDirectiveFunc($interval, Sit, $state){
     return {
       template: '<h1>{{clock}}</h1>' + '<input type="button" class="button" id="pause-button" value="Pause/Resume" ng-click="pauseTimer()" />' + '<input type="button" class="button" id="stop-button" value="End Session" ng-click="stopTimer()" />' + '<br>',
       replace: false,
@@ -117,16 +117,13 @@
                 record.duration = scope.duration;
                 Sit.update({duration: record.duration, notes: record.notes}, function(){
                 });
+                $state.go("sits");
               });
             };
 
             //determines total elapsed time and updates user's record
             scope.stopTimer = function(){
               scope.duration = (durationSet * 60) - ((minutes * 60) + seconds);
-              var record = sits[sits.length - 1];
-              record.duration = scope.duration;
-              // Sit.update({duration: record.duration}, function(){
-              // });
               // bell.play();
               scope.revealJouranl();
               $interval.cancel(scope.timer);
