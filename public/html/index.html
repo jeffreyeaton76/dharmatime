@@ -1,12 +1,14 @@
 <nav-directive></nav-directive>
 <div id="logo-box">
-  <h1>DHARMATIME</h1>
+  <h1><a ui-sref="index">DHARMATIME</a></h1>
 </div>
 <div class="content">
-<h1>Welcome</h1>
-<p>To begin timing a meditation session click New Sitting. You will be prompted to set the duration of your meditation session. Your session will be logged when it begins and the duration sat will be logged when the timer runs out or you chose to end the session with the Stop button.</p>
-
-<p>To review a list of you mediations logs click Archive.</p>
-
-<p>Enjoy your mediation (without becoming attached to the enjoyment)!</p>
+<img class="circle" src="assets/images/circle.png" alt="zen cirlce"/>
+<div data-ng-controller="newController as newVM" id="minutes-form">
+  <h2>Enter desired meditation period</h2>
+  <form>
+    <input type="number" min="0" data-ng-model="newVM.new_sit.durationset" placeholder="Minutes"/>
+    <button type="button" class="button" data-ng-click="newVM.create()">Begin</button>
+  </form>
+</div>
 </div>

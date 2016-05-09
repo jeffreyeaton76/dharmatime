@@ -1,7 +1,10 @@
 <nav-directive></nav-directive>
-<div class"content">
+<div id="logo-box">
+  <h1><a ui-sref="index">DHARMATIME</a></h1>
+</div>
+<div class="content">
   <div data-ng-controller="newController as newVM" id="minutes-form">
-    <h2>Enter time in minutes</h2>
+    <h2>Enter desired meditation period</h2>
     <form>
       <input type="number" min="0" data-ng-model="newVM.new_sit.durationset" placeholder="Minutes"/>
       <button type="button" class="button" data-ng-click="newVM.create()">Begin</button>

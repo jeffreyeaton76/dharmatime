@@ -5,7 +5,7 @@
 }
 body {
   color: white;
-  font-family: 'Merienda', cursive;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 a {
   color: white;
@@ -14,7 +14,7 @@ a {
 nav-directive {
   position: fixed;
   background-color: white;
-  height: 8%;
+  height: 65px;
   width: 100%;
   bottom:0px;
   margin-bottom:0px;
@@ -32,60 +32,65 @@ nav-directive li {
 }
 nav-directive a {
   color: grey;
+  letter-spacing: 3px;
+  font-size: 18px;
 }
 .content {
-  width:80%;
+  width:100%;
   top: 0px;
   margin-bottom: 0px;
-  margin-left: 28%;
   padding-top: 60px;
-  width: 60%;
 }
 #clock {
   width: 25%;
   margin: 0 auto;
-  margin-top: 80px;
+  margin-top: -220px;
   text-align: center;
   font-size: 30px;
+  z-index: 1;
+  margin-bottom: 300px;
 }
 #minutes-form {
-  height: 60px;
+  height: 360px;
   width: 40%;
   margin: 0 auto;
-  margin-top: 80px;
+  margin-top: 120px;
+  text-align: center;
 }
 input[type="number"] {
-  width:100px;
-  height: 35px;
+  height: 42px;
   border: none;
   text-align: center;
   font-size: 16px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  letter-spacing: 2px;
 }
 #date {
-  text-decoration: underline;
-  color: #4f9133;
+  text-decoration: underline;;
+  color: #ef5732;
 }
 .button {
-  background-color: #4f9133;
+  background-color: #336100;
   border: none;
   color: white;
   padding: 10px 32px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  letter-spacing: 2px;
 }
 #stop-button {
-  margin-top: 20px;
-  background-color: #750000;
-  margin-bottom: 40px;
+  background-color: #ef5732;
+}
+#pause-button {
+  margin-top: 220px;
 }
 #logo-box {
   position: fixed;
   background-color: white;
-  height: 8%;
+  height: 65px;
   width: 100%;
-  top: 0px;
-  margin-top: 0px;
   border-bottom: 5px solid grey;
   color: grey;
   text-align: center;
@@ -94,8 +99,32 @@ input[type="number"] {
 #logo-box h1 {
   margin-top: 20px;
 }
+#logo-box a {
+  color: grey;
+  text-decoration: none;
+}
 .notes {
   width: 200px;
   font-size: 16px;
-  padding: 5px 5px 150px 5px;
+  padding: 5px 5px 65px 5px;
+  margin-top: 20px;
+}
+.circle {
+  display: block;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+#circle-zaxis {
+  z-index: -1;
+}
+#about {
+  margin-left: 30%;
+  width: 45%;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+#sits {
+  margin-left: 30%;
+  margin-top: 20px;
+  padding-bottom: 80px;
 }

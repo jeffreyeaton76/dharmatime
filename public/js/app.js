@@ -57,7 +57,7 @@
 
   function clockDirectiveFunc($interval, Sit){
     return {
-      template: '<h1>{{clock}}</h1>' + '<input type="button" class="button" value="Pause/Resume" ng-click="pauseTimer()" />' + '<input type="button" class="button" id="stop-button" value="Stop Timer" ng-click="stopTimer()" />' + '<br>',
+      template: '<h1>{{clock}}</h1>' + '<input type="button" class="button" id="pause-button" value="Pause/Resume" ng-click="pauseTimer()" />' + '<input type="button" class="button" id="stop-button" value="End Session" ng-click="stopTimer()" />' + '<br>',
       replace: false,
       restrict: 'E',
       link: function(scope){
@@ -102,6 +102,7 @@
               var label = document.createElement("label");
               label.appendChild(document.createTextNode('Notes:'));
               input.className = "notes";
+              input.name = "notes";
               container.appendChild(label);
               container.appendChild(input);
               var btn = document.createElement("button");
@@ -112,21 +113,20 @@
               btn.addEventListener("click", function(e){
                 e.preventDefault();
                 var record = sits[sits.length - 1];
-                scope.notes = input.value;
-                record.notes = scope.notes;
-                Sit.update({notes: record.notes}, function(){
-                  console.log("update notes");
+                record.notes = input.value;
+                record.duration = scope.duration;
+                Sit.update({duration: record.duration, notes: record.notes}, function(){
                 });
               });
-            }
+            };
 
             //determines total elapsed time and updates user's record
             scope.stopTimer = function(){
               scope.duration = (durationSet * 60) - ((minutes * 60) + seconds);
               var record = sits[sits.length - 1];
               record.duration = scope.duration;
-              Sit.update({duration: record.duration}, function(){
-              });
+              // Sit.update({duration: record.duration}, function(){
+              // });
               // bell.play();
               scope.revealJouranl();
               $interval.cancel(scope.timer);

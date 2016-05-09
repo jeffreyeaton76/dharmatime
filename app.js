@@ -17,8 +17,8 @@ var SitSchema = new mongoose.Schema(
 var Sit = mongoose.model("Sit", SitSchema);
 var app = express();
 
-app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use("/assets", express.static("public"));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(parser.json({extended: true}));
 app.set("view engine", "hbs");
 app.engine(".hbs", hbs({
@@ -41,14 +41,16 @@ app.get("/api", function(req, res){
 });
 
 app.post("/api", function(req, res){
-  Sit.create({date: Date.now(), durationset: req.body.durationset, duration: 0, notes: 'poop'}).then(function(){
+  Sit.create({date: Date.now(), durationset: req.body.durationset, duration: 0, notes: ''}).then(function(){
     res.json({success: true});
   });
 });
 
 app.put("/api", function(req, res){
-  Sit.findOneAndUpdate({notes: "poop"}, {notes: req.body.notes}).then(function(){
-    res.json({success: true});
+  Sit.findOne({}, {}, {sort: {'date': -1}}, function(err, doc){
+    doc.duration = req.body.duration;
+    doc.notes = req.body.notes;
+    doc.save();
   });
 });
 
