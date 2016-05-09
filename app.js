@@ -51,6 +51,7 @@ app.put("/api", function(req, res){
     doc.duration = req.body.duration;
     doc.notes = req.body.notes;
     doc.save();
+    res.json({success: true});
   });
 });
 

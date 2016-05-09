@@ -63,8 +63,8 @@
       link: function(scope){
         var setTimer = 0;
         Sit.query().$promise.then(function(sits){
-          var bell = new Audio('/assets/gong.wav');
-          // bell.play();
+          var bell = new Audio('/assets/gong-cut.mp3');
+          bell.play();
           var durationSet = (sits[sits.length - 1].durationset);
           //setTimer will change in the pause function while original durationSet
           //will still be needed when the siting is over to calculate total
@@ -124,7 +124,7 @@
             //determines total elapsed time and updates user's record
             scope.stopTimer = function(){
               scope.duration = (durationSet * 60) - ((minutes * 60) + seconds);
-              // bell.play();
+              bell.play();
               scope.revealJouranl();
               $interval.cancel(scope.timer);
             };
