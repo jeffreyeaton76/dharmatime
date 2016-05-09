@@ -17,6 +17,7 @@ var SitSchema = new mongoose.Schema(
 var Sit = mongoose.model("Sit", SitSchema);
 var app = express();
 
+app.set("port", process.env.PORT || 3000);
 app.use("/assets", express.static("public"));
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(parser.json({extended: true}));
@@ -59,4 +60,5 @@ app.get("/*", function(req, res){
   res.render("timer");
 });
 
-app.listen(3000);
+app.listen(app.get("port"), function(){
+});
