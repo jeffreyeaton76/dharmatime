@@ -1,9 +1,12 @@
-var express = require("express");
-var hbs = require("express-handlebars");
-var mongoose = require("mongoose");
-var parser = require("body-parser");
-var favicon = require('serve-favicon');
+'use strict';
 
+/**
+ * Module dependencies.
+ */
+var express  = require("./express");
+var mongoose = require("mongoose");
+
+var app = express.init();
 
 if(process.env.NODE_ENV == "production"){
   mongoose.connect(process.env.MONGODB_URI);
@@ -21,25 +24,7 @@ var SitSchema = new mongoose.Schema(
 );
 
 var Sit = mongoose.model("Sit", SitSchema);
-var app = express();
 
-app.set("port", process.env.PORT || 3000);
-app.use("/assets", express.static("public"));
-app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(parser.json({extended: true}));
-app.set("view engine", "hbs");
-app.engine(".hbs", hbs({
-  extname: ".hbs",
-  partialsDir: "views/",
-  layoutsDir: "views/",
-  defaultLayout: "layout-main"
-}));
-
-// Sit.create({
-//   date: '2015-12-08',
-//   durationset: 30,
-//   duration: 90
-// });
 
 app.get("/api", function(req, res){
   Sit.find().then(function(sits){
