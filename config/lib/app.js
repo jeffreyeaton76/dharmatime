@@ -4,27 +4,12 @@
  * Module dependencies.
  */
 var express  = require("./express");
-var mongoose = require("mongoose");
+var mongoose = require("./mongoose");
 
+var Sit = mongoose.Sit;
 var app = express.init();
 
-if(process.env.NODE_ENV == "production"){
-  mongoose.connect(process.env.MONGODB_URI);
-}else{
-  mongoose.connect("mongodb://localhost/timer");
-}
-
-var SitSchema = new mongoose.Schema(
-  {
-    date: {type: Date},
-    durationset: Number,
-    duration: Number,
-    notes: String
-  }
-);
-
-var Sit = mongoose.model("Sit", SitSchema);
-
+mongoose.connect();
 
 app.get("/api", function(req, res){
   Sit.find().then(function(sits){
