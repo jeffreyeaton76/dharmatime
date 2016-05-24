@@ -9,8 +9,6 @@ var parser   = require("body-parser");
 var favicon  = require("serve-favicon");
 var path     = require("path");
 
-// module.exports.initMiddleware = function (app) {
-// };
 
 module.exports.init = function(){
   var app = express();
