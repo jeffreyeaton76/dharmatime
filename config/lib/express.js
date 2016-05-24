@@ -9,16 +9,8 @@ var parser   = require("body-parser");
 var favicon  = require("serve-favicon");
 var path     = require("path");
 
-
-module.exports.initMiddleware = function (app) {
-  app.use(favicon(__dirname + '/public/favicon.ico'));
-  app.use("/assets", express.static("public"));
-  app.use(parser.json({extended: true}));
-};
-
-
-
-
+// module.exports.initMiddleware = function (app) {
+// };
 
 module.exports.init = function(){
   var app = express();
@@ -29,6 +21,9 @@ module.exports.init = function(){
     layoutsDir: "views/",
     defaultLayout: "layout-main"
   }));
+  app.use(favicon('./public/favicon.ico'));
+  app.use("/assets", express.static("public"));
+  app.use(parser.json({extended: true}));
   app.set("port", process.env.PORT || 3001);
   return app;
 }
