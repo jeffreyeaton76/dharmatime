@@ -22,6 +22,6 @@ module.exports.init = function(){
   app.use(favicon('./public/favicon.ico'));
   app.use("/assets", express.static("public"));
   app.use(parser.json({extended: true}));
-  app.set("port", process.env.PORT || 3001);
+  app.set("port", process.env.PORT || 3000);
   return app;
 }
