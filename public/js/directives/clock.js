@@ -1,7 +1,7 @@
 angular.module('timer')
 .directive('clockDirective', ["$interval", "sitFactory", "$state", function($interval, Sit, $state){
     return {
-      template: '<h1>{{clock}}</h1>' + '<input type="button" class="button" id="pause-button" value="Pause/Resume" ng-click="pauseTimer()" />' + '<input type="button" class="button" id="stop-button" value="End Session" ng-click="stopTimer()" />' + '<br>',
+      templateUrl: 'assets/templates/directives/clock.html',
       replace: false,
       restrict: 'E',
       link: function(scope){
