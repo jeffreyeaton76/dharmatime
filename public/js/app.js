@@ -4,21 +4,8 @@
     "$locationProvider",
     routerFunction
   ])
-  .factory("sitFactory", sitFactoryFunc)
-  .controller("bodyController", ["$scope", bodyControllerFunc])
-  .filter('reverse', function() {
-    return function(items) {
-      return items.slice().reverse();
-    };
-  })
-  .filter('formatTimer', function () {
-    return function (input) {
-      function z(n) { return (n < 10 ? '0' : '') + n; }
-      var seconds = input % 60;
-      var minutes = Math.floor(input % 3600 / 60);
-      return (z(minutes) + ' minutes and ' + z(seconds) + ' seconds');
-    };
-  });
+  .factory("sitFactory", sitFactoryFunc);
+
 
   function routerFunction($stateProvider, $locationProvider){
     $locationProvider.html5Mode(true);
@@ -54,8 +41,4 @@
       update: {method: "PUT"}
     });
     return Sit;
-  }
-
-  function bodyControllerFunc($scope){
-    $scope.bodyStyle = {background: "url(assets/images/bridge.jpg) no-repeat center center fixed"};
   }
