@@ -1,10 +1,6 @@
   angular.module("timer", ["ngResource", "ui.router"])
-  .config([
-    "$stateProvider",
-    "$locationProvider",
-    routerFunction
-  ])
-  .factory("sitFactory", sitFactoryFunc);
+  .config(["$stateProvider", "$locationProvider", routerFunction
+  ]);
 
 
   function routerFunction($stateProvider, $locationProvider){
@@ -34,11 +30,4 @@
       url:"/session",
       templateUrl:"/assets/html/session.html"
     });
-  }
-
-  function sitFactoryFunc($resource){
-    var Sit = $resource("/api/:id", {}, {
-      update: {method: "PUT"}
-    });
-    return Sit;
   }
