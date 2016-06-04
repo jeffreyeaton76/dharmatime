@@ -5,10 +5,6 @@
     routerFunction
   ])
   .factory("sitFactory", sitFactoryFunc)
-  .controller("sitsController", ["sitFactory", sitsControllerFunc])
-  .controller("indexController", ["sitFactory", indexControllerFunc])
-  .controller("newController", ["sitFactory", "$state", newControllerFunc])
-  .controller("sessionController", ["$scope", sessionControllerFunc])
   .controller("bodyController", ["$scope", bodyControllerFunc])
   .filter('reverse', function() {
     return function(items) {
@@ -29,9 +25,7 @@
     $stateProvider
     .state("index", {
       url:"/",
-      templateUrl:"/assets/html/index.html",
-      controller:"indexController",
-      controllerAs:"indexVM"
+      templateUrl:"/assets/html/index.html"
     })
     .state("sits", {
       url:"/sits",
@@ -51,9 +45,7 @@
     })
     .state("session", {
       url:"/session",
-      templateUrl:"/assets/html/session.html",
-      controller:"sessionController",
-      controllerAs:"sessionVM"
+      templateUrl:"/assets/html/session.html"
     });
   }
 
@@ -64,29 +56,6 @@
     return Sit;
   }
 
-  function newControllerFunc(Sit, $state){
-    var newVM = this;
-    newVM.new_sit = new Sit();
-    newVM.create = function(){
-      newVM.new_sit.$save().then(function(response){
-        $state.go("session");
-      });
-    };
-  }
-
-  function sitsControllerFunc(Sit){
-    this.sits = Sit.query();
-  }
-
-  function indexControllerFunc(Sit){
-    this.sits = Sit.query();
-  }
-
   function bodyControllerFunc($scope){
     $scope.bodyStyle = {background: "url(assets/images/bridge.jpg) no-repeat center center fixed"};
-  }
-
-  function sessionControllerFunc($scope){
-    var sessionVM = this;
-    sessionVM.clock = $scope.endClock;
   }
