@@ -1,16 +1,10 @@
+<logo-directive></logo-directive>
+  <div data-ng-controller="newController as newVM" id="minutes-form">
+    <h2>Enter desired meditation period</h2>
+    <form>
+      <input type="number" min="0" data-ng-model="newVM.new_sit.durationset" placeholder="Minutes"/>
+      <button type="button" class="button" data-ng-click="newVM.create()">Begin</button>
+    </form>
+  </div>
+</div>
 <nav-directive></nav-directive>
-<div id="logo-box">
-  <h1><a ui-sref="index">DHARMATIME</a></h1>
-</div>
-<div class="content">
-  <div class="circlebox">
-  <img class="circle" src="assets/images/circle.png" alt="zen cirlce"/>
-</div>
-<div data-ng-controller="newController as newVM" id="minutes-form">
-  <h2>Enter desired meditation period</h2>
-  <form>
-    <input type="number" min="0" data-ng-model="newVM.new_sit.durationset" placeholder="Minutes"/>
-    <button type="button" class="button" data-ng-click="newVM.create()">Begin</button>
-  </form>
-</div>
-</div>

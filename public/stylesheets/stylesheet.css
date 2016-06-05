@@ -96,10 +96,8 @@ input[type="number"] {
   text-align: center;
   letter-spacing: 18px;
 }
-#logo-box h1 {
+#logo-box h1, a {
   margin-top: 20px;
-}
-#logo-box a {
   color: grey;
   text-decoration: none;
 }

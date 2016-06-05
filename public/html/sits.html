@@ -1,19 +1,12 @@
-<nav-directive></nav-directive>
-<div id="logo-box">
-  <h1><a ui-sref="index">DHARMATIME</a></h1>
-</div>
-<div class="content">
-  <div class="circlebox">
-  <img class="circle" src="assets/images/circle.png" alt="zen cirlce"/>
-</div>
-  <div id="sits">
-    <h1>Session Log</h1>
-    <div ng-repeat="sit in sitsVM.sits | reverse">
-      <h2><span id="date">{{sit.date | date}}</span><h2>
-        <h2 id="log">Time set: {{sit.durationset}} minutes<br>
-          Time sat: {{sit.duration | formatTimer}}<br>
-          Notes: {{sit.notes}}
-        </h2><br>
-      </div>
+<logo-directive></logo-directive>
+<div id="sits">
+  <h1>Session Log</h1>
+  <div ng-repeat="sit in sitsVM.sits | reverse">
+    <h2><span id="date">{{sit.date | date}}</span><h2>
+      <h2 id="log">Time set: {{sit.durationset}} minutes<br>
+        Time sat: {{sit.duration | formatTimer}}<br>
+        Notes: {{sit.notes}}
+      </h2><br>
     </div>
   </div>
+  <nav-directive></nav-directive>
