@@ -8,26 +8,26 @@
     $stateProvider
     .state("index", {
       url:"/",
-      templateUrl:"/assets/html/index.html"
+      templateUrl:"/assets/templates/pages/index.html"
     })
     .state("sits", {
       url:"/sits",
-      templateUrl:"/assets/html/sits.html",
+      templateUrl:"/assets/templates/pages/sits.html",
       controller:"sitsController",
       controllerAs:"sitsVM"
     })
     .state("new", {
       url:"/new",
-      templateUrl:"/assets/html/new.html",
+      templateUrl:"/assets/templates/pages/new.html",
       controller:"newController",
       controllerAs:"newVW"
     })
     .state("about", {
       url:"/about",
-      templateUrl:"/assets/html/about.html",
+      templateUrl:"/assets/templates/pages/about.html",
     })
     .state("session", {
       url:"/session",
-      templateUrl:"/assets/html/session.html"
+      templateUrl:"/assets/templates/pages/session.html"
     });
   }
