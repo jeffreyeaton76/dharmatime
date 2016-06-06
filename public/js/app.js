@@ -2,7 +2,6 @@
   .config(["$stateProvider", "$locationProvider", routerFunction
   ]);
 
-
   function routerFunction($stateProvider, $locationProvider){
     $locationProvider.html5Mode(true);
     $stateProvider

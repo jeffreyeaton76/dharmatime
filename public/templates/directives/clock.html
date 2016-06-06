@@ -2,3 +2,5 @@
 <input type="button" class="button" id="pause-button" value="Pause/Resume" ng-click="pauseTimer()" />
 <input type="button" class="button" id="stop-button" value="End Session" ng-click="stopTimer()" />
 <br>
+<input ng-show="revealJournal" type="textarea" class="notes" ng-model="usernotes" placeholder="Notes:"/>
+<input ng-show="revealJournal" type="button" class="button" value="Save/Return" ng-click="saveFinal()" />
