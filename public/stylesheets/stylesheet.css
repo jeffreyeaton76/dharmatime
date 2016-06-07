@@ -11,7 +11,7 @@ a {
   color: white;
   text-decoration: none;
 }
-nav-directive {
+nav-directive, login-directive {
   position: fixed;
   background-color: white;
   height: 65px;
@@ -34,6 +34,14 @@ nav-directive a {
   color: grey;
   letter-spacing: 3px;
   font-size: 18px;
+}
+
+.form-control{
+  margin-left: 30px;
+}
+
+#email{
+  margin-top: 8px;
 }
 .content {
   width:100%;
@@ -79,6 +87,18 @@ input[type="number"] {
   font-size: 16px;
   font-family: 'Open Sans Condensed', sans-serif;
   letter-spacing: 2px;
+}
+#sign-in-button{
+  background-color: #336100;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 5px;
+  font-size: 14px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
 }
 #stop-button {
   background-color: #ef5732;
