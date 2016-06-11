@@ -1,7 +1,8 @@
 * {
   margin: 0;
   padding: 0;
-  /*border: 1px solid white;*/
+  box-sizing: border-box;
+  border: 1px solid black;
 }
 body {
   color: white;
@@ -34,6 +35,10 @@ nav-directive a {
   color: grey;
   letter-spacing: 3px;
   font-size: 18px;
+}
+
+#pumpkin {
+  width: 50px;
 }
 
 .form-control{
@@ -98,7 +103,7 @@ input[type="number"] {
   font-size: 14px;
   font-family: 'Open Sans Condensed', sans-serif;
   letter-spacing: 1px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 #stop-button {
   background-color: #ef5732;
