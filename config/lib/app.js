@@ -5,11 +5,17 @@
  */
 var express  = require("./express");
 var mongoose = require("./mongoose");
+var passport = require('passport');
+
+require('./passport');
+
 
 var Sit = mongoose.Sit;
 var app = express.init();
 
 mongoose.connect();
+
+app.use(passport.initialize());
 
 app.get("/api", function(req, res){
   Sit.find().then(function(sits){
