@@ -1,11 +1,20 @@
 'use strict';
 
 /**
- * Module dependencies.
- */
+* Module dependencies.
+*/
 var express  = require("./express");
 var mongoose = require("./mongoose");
 var passport = require('passport');
+var env = require("./env.json");
+
+process.env.session_secret = env.session_secret;
+
+var jwt = require('express-jwt');
+var auth = jwt({
+  secret: process.env.session_secret,
+  userProperty: 'payload'
+});
 
 require('./passport');
 
@@ -37,6 +46,9 @@ app.put("/api", function(req, res){
     res.json({success: true});
   });
 });
+
+
+app.get('/profile', auth, ctrlProfile.profileRead);
 
 app.get("/*", function(req, res){
   res.render("timer");

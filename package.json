@@ -20,11 +20,12 @@
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
-    "mongoose": "^4.4.13",
-    "serve-favicon": "^2.3.0",
+    "express-jwt": "^3.4.0",
     "jsonwebtoken": "~7.0.0",
+    "mongoose": "^4.4.13",
     "passport": "~0.3.2",
-    "passport-local": "~1.0.0"
+    "passport-local": "~1.0.0",
+    "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
