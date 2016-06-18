@@ -6,7 +6,7 @@
 var express  = require("./express");
 var mongoose = require("./mongoose");
 var passport = require('passport');
-var env = require("./env.json");
+var env = require("../../env.json");
 
 process.env.session_secret = env.session_secret;
 
@@ -15,6 +15,9 @@ var auth = jwt({
   secret: process.env.session_secret,
   userProperty: 'payload'
 });
+
+var ctrlProfile = require('../controllers/profile');
+var ctrlAuth = require('../controllers/authentication');
 
 require('./passport');
 

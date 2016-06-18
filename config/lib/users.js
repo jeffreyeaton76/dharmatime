@@ -3,7 +3,7 @@
 var mongoose = require('./mongoose');
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
-var env = require("./env.json");
+var env = require("../../env.json");
 
 process.env.session_secret = env.session_secret;
 
@@ -43,4 +43,4 @@ userSchema.methods.generateJwt = function() {
   }, process.env.session_secret); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };
 
-module.exports.Sit = mongoose.model("User", userSchema);
+module.exports.User = mongoose.model("User", userSchema);
