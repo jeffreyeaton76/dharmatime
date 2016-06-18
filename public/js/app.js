@@ -25,6 +25,10 @@
       url:"/about",
       templateUrl:"/assets/templates/pages/about.html",
     })
+    .state("register", {
+      url:"/registration",
+      templateUrl:"/assets/templates/pages/registration.html",
+    })
     .state("session", {
       url:"/session",
       templateUrl:"/assets/templates/pages/session.html"

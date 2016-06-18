@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /*border: 1px solid black;*/
+  border: 1px solid white;
 }
 body {
   color: white;
@@ -42,13 +42,13 @@ a {
   text-align: center;
   font-size: 30px;
   z-index: 1;
-  margin-bottom: 300px;
+  margin-bottom: 150px;
 }
 #minutes-form {
-  height: 260px;
   width: 40%;
+  height: 250px;
   margin: 0 auto;
-  margin-top: 80px;
+  margin-top: 60px;
   text-align: center;
 }
 input[type="number"] {
@@ -102,6 +102,10 @@ nav-directive a {
 }
 
 /*registration page*/
+.registration-form-group {
+  width: 240px;
+  margin: 0 auto;
+}
 .form-control{
   margin-left: 30px;
 }
@@ -114,7 +118,7 @@ nav-directive a {
 }
 
 /*buttons everywhere*/
-.button, #sign-in-button, #register-button {
+.button, #sign-in-button, #sign-up-button, #register-button {
   background-color: #336100;
   border: none;
   color: white;
@@ -125,16 +129,24 @@ nav-directive a {
   font-size: 16px;
   letter-spacing: 2px;
 }
-#sign-in-button, #register-button{
+#sign-in-button, #sign-up-button{
   padding: 5px;
   font-size: 14px;
   letter-spacing: 1px;
+  margin-left: 10px
 }
-#register-button, #stop-button{
+#sign-up-button, #stop-button{
   background-color: #ef5732;
 }
 #pause-button {
-  margin-top: 220px;
+  margin-top: 180px;
+}
+.login-form-group {
+  width: 180px;
+}
+.button-group {
+  margin-left: 170px;
+  margin-top: -32px;
 }
 
 /*about page's content*/

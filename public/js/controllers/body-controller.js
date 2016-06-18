@@ -2,6 +2,5 @@
 
 angular.module('timer')
 .controller("bodyController", function($scope){
-    $scope.bodyStyle = {background: "url(assets/images/bridge.jpg) no-repeat center center fixed"};
-  }
-);
+  $scope.bodyStyle = {background: "url(assets/images/bridge.jpg) no-repeat center center fixed"};
+});

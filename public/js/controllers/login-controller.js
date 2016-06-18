@@ -1,16 +1,15 @@
 angular.module('timer')
-.controller("registerCtrl", function ($location, authentication) {
+.controller("loginCtrl", function ($location, authentication) {
   var vm = this;
 
   vm.credentials = {
-    name : "",
     email : "",
     password : ""
   };
 
   vm.onSubmit = function () {
     authentication
-    .register(vm.credentials)
+    .login(vm.credentials)
     .error(function(err){
       alert(err);
     })
