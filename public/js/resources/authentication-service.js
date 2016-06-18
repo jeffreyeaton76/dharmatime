@@ -5,15 +5,15 @@ authentication.$inject = ['$http', '$window'];
 function authentication ($http, $window) {
 
   var saveToken = function (token) {
-    $window.localStorage['mean-token'] = token;
+    $window.localStorage['timer-token'] = token;
   };
 
   var getToken = function () {
-    return $window.localStorage['mean-token'];
+    return $window.localStorage['timer-token'];
   };
 
   logout = function() {
-    $window.localStorage.removeItem('mean-token');
+    $window.localStorage.removeItem('timer-token');
   };
 
   var isLoggedIn = function() {

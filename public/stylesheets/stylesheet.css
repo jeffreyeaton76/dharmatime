@@ -2,52 +2,33 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
 }
 body {
   color: white;
   font-family: 'Open Sans Condensed', sans-serif;
 }
 a {
-  color: white;
+  color: grey;
   text-decoration: none;
 }
-nav-directive, login-directive {
+
+/*top section with DHARMATIME logo*/
+#logo-box {
   position: fixed;
   background-color: white;
   height: 65px;
   width: 100%;
-  bottom:0px;
-  margin-bottom:0px;
-  border-top: 5px solid grey;
-}
-nav-directive ul{
+  border-bottom: 5px solid grey;
+  color: grey;
   text-align: center;
+  letter-spacing: 18px;
+}
+#logo-box h1 {
   margin-top: 20px;
 }
-nav-directive li {
-  display: inline;
-  list-style: none;
-  margin-left: 45px;
-  margin-right: 45px;
-}
-nav-directive a {
-  color: grey;
-  letter-spacing: 3px;
-  font-size: 18px;
-}
 
-#pumpkin {
-  width: 50px;
-}
-
-.form-control{
-  margin-left: 30px;
-}
-
-#email{
-  margin-top: 8px;
-}
+/*main section with big cirlce and clock*/
 .content {
   width:100%;
   top: 0px;
@@ -78,60 +59,6 @@ input[type="number"] {
   font-family: 'Open Sans Condensed', sans-serif;
   letter-spacing: 2px;
 }
-#date {
-  text-decoration: underline;;
-  color: #ef5732;
-}
-.button {
-  background-color: #336100;
-  border: none;
-  color: white;
-  padding: 10px 32px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  letter-spacing: 2px;
-}
-#sign-in-button{
-  background-color: #336100;
-  border: none;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  padding: 5px;
-  font-size: 14px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
-}
-#stop-button {
-  background-color: #ef5732;
-}
-#pause-button {
-  margin-top: 220px;
-}
-#logo-box {
-  position: fixed;
-  background-color: white;
-  height: 65px;
-  width: 100%;
-  border-bottom: 5px solid grey;
-  color: grey;
-  text-align: center;
-  letter-spacing: 18px;
-}
-#logo-box h1, a {
-  margin-top: 20px;
-  color: grey;
-  text-decoration: none;
-}
-.notes {
-  width: 200px;
-  font-size: 16px;
-  padding: 5px 5px 35px 5px;
-  margin-top: 20px;
-}
 .circlebox{
   width: 280px;
   margin: 0 auto;
@@ -141,15 +68,84 @@ input[type="number"] {
   width: 100%;
   margin-top: 60px;
 }
-#circle-zaxis {
-  z-index: -1;
+.notes {
+  width: 200px;
+  font-size: 16px;
+  padding: 5px 5px 35px 5px;
+  margin-top: 20px;
 }
+
+/*navigation directive*/
+nav-directive, login-directive {
+  position: fixed;
+  background-color: white;
+  height: 65px;
+  width: 100%;
+  bottom:0px;
+  margin-bottom:0px;
+  border-top: 5px solid grey;
+}
+nav-directive ul{
+  text-align: center;
+  margin-top: 20px;
+}
+nav-directive li {
+  display: inline;
+  list-style: none;
+  margin-left: 45px;
+  margin-right: 45px;
+}
+nav-directive a {
+  color: grey;
+  letter-spacing: 3px;
+  font-size: 18px;
+}
+
+/*registration page*/
+.form-control{
+  margin-left: 30px;
+}
+#email{
+  margin-top: 8px;
+}
+#date {
+  text-decoration: underline;;
+  color: #ef5732;
+}
+
+/*buttons everywhere*/
+.button, #sign-in-button, #register-button {
+  background-color: #336100;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Open Sans Condensed', sans-serif;
+  padding: 10px 32px;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+#sign-in-button, #register-button{
+  padding: 5px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+#register-button, #stop-button{
+  background-color: #ef5732;
+}
+#pause-button {
+  margin-top: 220px;
+}
+
+/*about page's content*/
 #about {
   margin-left: 30%;
   width: 45%;
   font-size: 18px;
   letter-spacing: 2px;
 }
+
+/*session archive content*/
 #sits {
   margin-left: 30%;
   margin-top: 20px;
