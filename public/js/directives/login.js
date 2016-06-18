@@ -3,8 +3,8 @@ angular.module('timer')
     return {
       replace: false,
       restrict: 'E',
-      templateUrl: 'assets/templates/directives/login.html',
       controller: 'loginCtrl',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      templateUrl: 'assets/templates/directives/login.html'
     };
   });

@@ -1,5 +1,5 @@
 angular.module('timer')
-.controller("loginCtrl", function ($location, authentication) {
+.controller('loginCtrl', function ($location, authentication) {
   var vm = this;
 
   vm.credentials = {

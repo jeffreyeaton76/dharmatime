@@ -1,6 +1,7 @@
 var passport = require('passport');
-var mongoose = require('../lib/mongoose');
-var User = mongoose.User;
+var mongoose = require('mongoose');
+// var mongoose = require('../lib/users');
+var User = mongoose.model('User');
 
 module.exports.register = function(req, res) {
   var user = new User();

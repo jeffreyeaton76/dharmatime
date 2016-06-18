@@ -5,6 +5,7 @@
 */
 var express  = require("./express");
 var mongoose = require("./mongoose");
+var users = require("./users");
 var passport = require('passport');
 var env = require("../../env.json");
 
@@ -23,6 +24,7 @@ require('./passport');
 
 
 var Sit = mongoose.Sit;
+var User = mongoose.User;
 var app = express.init();
 
 mongoose.connect();
@@ -52,6 +54,9 @@ app.put("/api", function(req, res){
 
 
 app.get('/profile', auth, ctrlProfile.profileRead);
+
+app.post('/api/register', ctrlAuth.register);
+app.post('/api/login', ctrlAuth.login);
 
 app.get("/*", function(req, res){
   res.render("timer");

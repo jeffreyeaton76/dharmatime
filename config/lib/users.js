@@ -1,6 +1,6 @@
 'use strict';
 
-var mongoose = require('./mongoose');
+var mongoose = require('mongoose');
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 var env = require("../../env.json");
@@ -43,4 +43,4 @@ userSchema.methods.generateJwt = function() {
   }, process.env.session_secret); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };
 
-module.exports.User = mongoose.model("User", userSchema);
+mongoose.model("User", userSchema);
