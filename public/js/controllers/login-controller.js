@@ -1,5 +1,5 @@
 angular.module('timer')
-.controller('loginCtrl', function ($location, authentication) {
+.controller('loginCtrl', function ($state, authentication) {
   var vm = this;
 
   vm.credentials = {
@@ -8,13 +8,18 @@ angular.module('timer')
   };
 
   vm.onSubmit = function () {
+    console.log("login?");
     authentication
     .login(vm.credentials)
     .error(function(err){
       alert(err);
     })
     .then(function(){
-      $location.path('profile');
+      $state.go('new');
     });
   };
+
+  vm.isLoggedIn = authentication.isLoggedIn();
+
+  vm.currentUser = authentication.currentUser();
 });

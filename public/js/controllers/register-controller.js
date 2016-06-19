@@ -1,5 +1,5 @@
 angular.module('timer')
-.controller("registerCtrl", function ($location, authentication) {
+.controller("registerCtrl", function ($state, authentication) {
   var vm = this;
 
   vm.credentials = {
@@ -9,13 +9,16 @@ angular.module('timer')
   };
 
   vm.onSubmit = function () {
+    console.log("hello?");
+    console.log(vm.credentials);
     authentication
     .register(vm.credentials)
     .error(function(err){
       alert(err);
     })
     .then(function(){
-      $location.path('profile');
+      $state.go('new');
     });
+    console.log("wtf");
   };
 });

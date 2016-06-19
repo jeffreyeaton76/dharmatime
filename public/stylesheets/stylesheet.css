@@ -23,9 +23,17 @@ a {
   color: grey;
   text-align: center;
   letter-spacing: 18px;
+  clear: both;
 }
 #logo-box h1 {
+  display: inline-block;
   margin-top: 20px;
+}
+#logo-box h2 {
+  text-align: right;
+  float: right;
+  letter-spacing: normal;
+  vertical-align: top;
 }
 
 /*main section with big cirlce and clock*/
@@ -101,8 +109,8 @@ nav-directive a {
   font-size: 18px;
 }
 
-/*registration page*/
-.registration-form-group {
+/*register page*/
+.register-form-group {
   width: 240px;
   margin: 0 auto;
 }

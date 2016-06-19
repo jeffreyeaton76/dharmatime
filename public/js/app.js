@@ -26,8 +26,8 @@
       templateUrl:"/assets/templates/pages/about.html",
     })
     .state("register", {
-      url:"/registration",
-      templateUrl:"/assets/templates/pages/registration.html",
+      url:"/register",
+      templateUrl:"/assets/templates/pages/register.html",
     })
     .state("session", {
       url:"/session",

@@ -3,6 +3,8 @@ angular.module('timer')
     return {
       replace: false,
       restrict: 'E',
+      controller: 'navigationCtrl',
+      controllerAs: 'vm',
       templateUrl: 'assets/templates/directives/nav.html'
     };
   });

@@ -1,10 +1,12 @@
-<form ng-submit="vm.onSubmit()">
+<form ng-hide="vm.isLoggedIn" ng-submit="vm.onSubmit()">
   <div class="login-form-group">
     <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="vm.credentials.email">
     <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.credentials.password">
   </div>
   <div class="button-group">
     <button type="submit" id="sign-in-button">Sign In</button>
-    <button type="submit" id="sign-up-button">Register</button>
+    <button ui-sref="register" id="sign-up-button">Register</button>
   </div>
 </form>
+<nav-directive ng-show="vm.isLoggedIn"></nav-directive>
+

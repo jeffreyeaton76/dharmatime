@@ -3,6 +3,8 @@ angular.module('timer')
     return {
       replace: false,
       restrict: 'E',
+      controller: 'logoCircleCtrl',
+      controllerAs: 'vm',
       templateUrl: 'assets/templates/directives/logo-circle.html'
     };
   });
