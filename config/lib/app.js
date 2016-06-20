@@ -5,7 +5,7 @@
 */
 var express  = require("./express");
 var mongoose = require("./mongoose");
-var users = require("./users");
+var User = require("./users");
 var passport = require('passport');
 var env = require("../../env.json");
 

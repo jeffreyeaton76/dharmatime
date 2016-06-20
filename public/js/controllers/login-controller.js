@@ -1,5 +1,5 @@
 angular.module('timer')
-.controller('loginCtrl', function ($location, authentication) {
+.controller('loginCtrl', function ($state, authentication) {
   var vm = this;
 
   vm.credentials = {
@@ -14,7 +14,7 @@ angular.module('timer')
       alert(err);
     })
     .then(function(){
-      $location.path('profile');
+      $state.go('new');
     });
   };
 });
