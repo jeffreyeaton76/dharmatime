@@ -20,7 +20,7 @@ var auth = jwt({
 var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
 
-require('./passport');
+require("./passport");
 
 
 var Sit = mongoose.Sit;

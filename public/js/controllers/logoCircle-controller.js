@@ -6,6 +6,9 @@ angular.module('timer')
 
   vm.currentUser = authentication.currentUser();
 
-  vm.logout = authentication.logout();
+  vm.logout = function (){
+    authentication.logout();
+    vm.currentUser = false;
+  };
 
 });

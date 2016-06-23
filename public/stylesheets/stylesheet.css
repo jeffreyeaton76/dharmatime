@@ -25,7 +25,12 @@ a {
   letter-spacing: 18px;
 }
 #logo-box h1 {
+  display: inline-block;
   margin-top: 20px;
+}
+#logo-box h2 {
+  letter-spacing: normal;
+  
 }
 
 /*main section with big cirlce and clock*/

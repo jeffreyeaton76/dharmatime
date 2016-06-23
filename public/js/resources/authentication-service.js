@@ -12,10 +12,6 @@ function authentication ($http, $window) {
     return $window.localStorage['timer-token'];
   };
 
-  logout = function() {
-    $window.localStorage.removeItem('timer-token');
-  };
-
   var isLoggedIn = function() {
     var token = getToken();
     var payload;
@@ -56,13 +52,17 @@ function authentication ($http, $window) {
     });
   };
 
+  logout = function() {
+    $window.localStorage.removeItem('timer-token');
+  };
+
   return {
     saveToken : saveToken,
     getToken : getToken,
-    logout : logout,
     isLoggedIn : isLoggedIn,
     currentUser : currentUser,
     register : register,
-    login : login
+    login : login,
+    logout : logout
   };
 }
