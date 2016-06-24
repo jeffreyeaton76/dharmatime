@@ -1,7 +1,11 @@
 <div id="logo-box">
-  <h1><a ui-sref="index">DHARMATIME</a></h1>
-  <h2 ng-show="vm.currentUser">Welcome {{vm.currentUser.name}}</h2>
-  <h2 ng-show="vm.currentUser" ng-click="vm.logout()">Logout</h2>
+  <div class="dharmatime">
+    <h1><a ui-sref="index">DHARMATIME</a></h1>
+  </div>
+  <div class="user-logout">
+    <h2 ng-show="vm.currentUser">Welcome {{vm.currentUser.name | capitalize}}</h2>
+    <h2 ng-show="vm.currentUser" ng-click="vm.logout()">Logout</h2>
+  </div>
 </div>
 <div class="content">
   <div class="circlebox">

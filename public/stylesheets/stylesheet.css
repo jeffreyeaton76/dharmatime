@@ -12,6 +12,9 @@ a {
   color: grey;
   text-decoration: none;
 }
+[ng-click] {
+  cursor: pointer;
+}
 
 /*top section with DHARMATIME logo*/
 #logo-box {
@@ -24,17 +27,22 @@ a {
   text-align: center;
   letter-spacing: 18px;
 }
-#logo-box h1 {
+.dharmatime {
   display: inline-block;
+  position:absolute;
+  width: 350px;
   margin-top: 20px;
+  left: 50%;
+  margin-left: -175px;
+}
+.user-logout {
+  width: 180px;
+  float: right;
 }
 #logo-box h2 {
   letter-spacing: normal;
-  text-align: right;
-  float: right;
-  letter-spacing: normal;
-  vertical-align: top;
 }
+
 
 /*main section with big cirlce and clock*/
 .content {
@@ -84,7 +92,7 @@ input[type="number"] {
 }
 
 /*navigation directive*/
-nav-directive, login-directive {
+.nav, login-directive {
   position: fixed;
   background-color: white;
   height: 65px;
@@ -93,17 +101,17 @@ nav-directive, login-directive {
   margin-bottom:0px;
   border-top: 5px solid grey;
 }
-nav-directive ul{
+.nav ul{
   text-align: center;
   margin-top: 20px;
 }
-nav-directive li {
+.nav li {
   display: inline;
   list-style: none;
   margin-left: 45px;
   margin-right: 45px;
 }
-nav-directive a {
+.nav a {
   color: grey;
   letter-spacing: 3px;
   font-size: 18px;
