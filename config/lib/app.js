@@ -17,8 +17,8 @@ var auth = jwt({
   userProperty: 'payload'
 });
 
-var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
+var ctrlProfile = require('../controllers/profile');
 
 
 require("./passport");
@@ -27,8 +27,6 @@ require("./passport");
 var Sit = mongoose.Sit;
 var User = mongoose.User;
 var app = express.init();
-
-
 
 mongoose.connect();
 
