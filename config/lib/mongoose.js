@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var users = require('./users');
 
 module.exports.connect = function (){
   if(process.env.NODE_ENV == "production"){
@@ -18,7 +19,5 @@ var SitSchema = new mongoose.Schema(
     notes: String
   }
 );
-
-
 
 module.exports.Sit = mongoose.model("Sit", SitSchema);

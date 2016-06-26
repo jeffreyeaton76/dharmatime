@@ -1,5 +1,5 @@
 angular.module('timer')
-.controller('loginCtrl', function ($state, authentication) {
+.controller('loginCtrl', function ($scope, $state, authentication) {
   var vm = this;
 
   vm.isLoggedIn = authentication.isLoggedIn();

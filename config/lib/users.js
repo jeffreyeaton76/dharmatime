@@ -18,7 +18,13 @@ var userSchema = new mongoose.Schema({
     required: true
   },
   hash: String,
-  salt: String
+  salt: String,
+  sit: [{
+      date: {type: Date},
+      durationset: Number,
+      duration: Number,
+      notes: String,
+      }]
 });
 
 userSchema.methods.setPassword = function(password){
@@ -43,4 +49,4 @@ userSchema.methods.generateJwt = function() {
   }, process.env.session_secret);
 };
 
-module.exports.User = mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", userSchema);

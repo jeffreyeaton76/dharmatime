@@ -5,7 +5,7 @@
 */
 var express  = require("./express");
 var mongoose = require("./mongoose");
-var User = require("./users");
+var user = require("./users");
 var passport = require('passport');
 var env = require("../../env.json");
 
@@ -20,6 +20,7 @@ var auth = jwt({
 var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
 
+
 require("./passport");
 
 
@@ -27,9 +28,12 @@ var Sit = mongoose.Sit;
 var User = mongoose.User;
 var app = express.init();
 
+
+
 mongoose.connect();
 
 app.use(passport.initialize());
+
 
 app.get("/api", function(req, res){
   Sit.find().then(function(sits){
@@ -49,6 +53,12 @@ app.put("/api", function(req, res){
     doc.notes = req.body.notes;
     doc.save();
     res.json({success: true});
+  });
+});
+
+app.get('/user', function(req, res){
+  User.find().then(function(users) {
+    res.json(users);
   });
 });
 
